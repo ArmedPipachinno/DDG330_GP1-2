@@ -35,11 +35,54 @@ public class Movement : MonoBehaviour
 
         Vector3 newPosition = RigidPlay.transform.position + velocity * Time.deltaTime;
         RigidPlay.velocity = newPosition;
+        Point_To_Mouse();
     }
 
     //float cameraHorizontalAngle = _CurtHoriAngle;
     ////Rotate the player character towards the camera direction
     //Quaternion TargetRotation = Quaternion.Euler(0f, 0f /*cameraHorizontalAngle*/, 0f);
     //transform.rotation = Quaternion.Slerp(transform.rotation, TargetRotation, Time.deltaTime * RotationSpeed);
+
+    private void Point_To_Mouse()
+    {
+        //// Get the mouse position in screen space
+        //Vector3 mousePosition = Input.mousePosition;
+
+        //// Set the z-coordinate to the distance from the camera to the object to ensure correct conversion
+        //mousePosition.z = Vector3.Distance(transform.position, Camera.main.transform.position);
+
+        //// Convert the mouse position from screen space to world space
+        //Vector3 targetPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        //// Get the direction from the object to the mouse position
+        //Vector3 targetDirection = targetPosition;// - transform.position;
+
+        //// Calculate the rotation angle in radians
+        //float angle = Mathf.Atan2(targetDirection.y, targetDirection.x);
+
+        //// Convert the angle from radians to degrees and rotate the object
+        //float angleInDegrees = angle * Mathf.Rad2Deg;
+        //transform.rotation = Quaternion.Euler(new Vector3(0, -angleInDegrees, 0));
+
+        // Get the mouse position in screen space
+        // Get the mouse position in screen space
+        Vector3 mousePosition = Input.mousePosition;
+
+        // Set the z-coordinate to the distance from the camera to the object to ensure correct conversion
+        mousePosition.z = Vector3.Distance(transform.position, Camera.main.transform.position);
+
+        // Convert the mouse position from screen space to world space
+        Vector3 targetPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        // Get the direction from the object to the mouse position
+        Vector3 targetDirection = targetPosition - transform.position;
+
+        // Calculate the rotation angle in radians around the Y-axis
+        float angle = Mathf.Atan2(targetDirection.x, targetDirection.z);
+
+        // Convert the angle from radians to degrees and rotate the object around Y-axis
+        float angleInDegrees = angle * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, angleInDegrees, 0));
+    }
 }
 
