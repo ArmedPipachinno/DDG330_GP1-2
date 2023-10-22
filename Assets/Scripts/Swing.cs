@@ -1,6 +1,58 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class BatSwing : MonoBehaviour
+public class Swing : MonoBehaviour
+{
+    // Speed at which the object is propelled when triggered
+    [SerializeField] private float propelSpeed = 10f;
+    [SerializeField] private BoxCollider Box;
+
+    private void Awake()
+    {
+        Box = GetComponent<BoxCollider>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            //Debug.Log("Clicking");
+            Box.enabled = true;
+        }
+        else
+        {
+            Box.enabled = false;
+        }
+    }
+    void OnTriggerEnter(Collider other)
+        {
+            // Check if the entering object has the tag "Ball"
+            if (other.CompareTag("Ball"))
+            {
+                // Calculate the direction away from the player object
+                Vector3 awayFromPlayer = other.transform.position - transform.position;
+
+                // Normalize the direction to make it a unit vector
+                awayFromPlayer.Normalize();
+
+                // Get the Rigidbody component of the ball
+                Rigidbody ballRigidbody = other.GetComponent<Rigidbody>();
+
+                // Add velocity to the ball in the opposite direction
+                ballRigidbody.velocity = awayFromPlayer * propelSpeed;
+
+                // Change the rotation of the ball to face away from the player object
+                Quaternion newRotation = Quaternion.LookRotation(-awayFromPlayer);
+                ballRigidbody.rotation = newRotation;
+            }
+    }
+
+    
+    
+}
+
+/*
 {
     [SerializeField] Transform Player; // Reference to the player's transform
     [SerializeField] private float SwingSpeed = 90f; // Speed at which the bat swings (degrees per second)
@@ -100,3 +152,4 @@ public class BatSwing : MonoBehaviour
         transform.localRotation = returnRotation;
     }
 }
+*/
