@@ -728,7 +728,6 @@ GameObject:
   - component: {fileID: 511993406}
   - component: {fileID: 511993405}
   - component: {fileID: 511993404}
-  - component: {fileID: 511993407}
   m_Layer: 0
   m_Name: Bat
   m_TagString: BounceSurface
@@ -822,23 +821,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511993402}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &511993407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511993402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97708aebd838e26479b95bfba15599ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 568442042}
-  SwingSpeed: 180
-  SwingRadius: 3
-  MaxSwingAngle: 90
-  ReturnSpeed: 90
 --- !u!1 &526590210
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,6 +939,8 @@ GameObject:
   - component: {fileID: 568442040}
   - component: {fileID: 568442039}
   - component: {fileID: 568442043}
+  - component: {fileID: 568442045}
+  - component: {fileID: 568442044}
   m_Layer: 0
   m_Name: Player_Body
   m_TagString: Untagged
@@ -992,9 +976,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc593b9b209f08945964daa8ccfae538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RigidPlay: {fileID: 568442041}
-  WalkSpeed: 80
-  RunSpeed: 160
+  WalkSpeed: 10
+  RunSpeed: 20
 --- !u!54 &568442041
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1057,6 +1040,41 @@ MonoBehaviour:
   MaxHP: 3
   HP: 0
   InvincibleDuration: 3.5
+--- !u!65 &568442044
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568442038}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 2.5, z: 3}
+  m_Center: {x: 0, y: 1, z: 3}
+--- !u!114 &568442045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568442038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97708aebd838e26479b95bfba15599ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propelSpeed: 30
+  Box: {fileID: 568442044}
 --- !u!1 &627748452
 GameObject:
   m_ObjectHideFlags: 0
@@ -3124,13 +3142,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2113295310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711e5e6ac516b6a48bebb4078fa93120, type: 3}
+  m_Script: {fileID: 11500000, guid: 733b3676c0e1580488685944a09afc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectWithHP: {fileID: 0}
-  MaxHP: 3
-  HP: 0
-  InvincibleDuration: 4
+  HpGetter: {fileID: 568442038}
+  HpUi: {fileID: 1641672253}
 --- !u!1 &2135643515 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3194855841134816826, guid: 13ada8dbfb9040e478ab221d1c4183fc, type: 3}

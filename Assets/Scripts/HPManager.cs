@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HPManager : MonoBehaviour
 {
-    [SerializeField] GameObject ObjectWithHP;//
+    [SerializeField] private GameObject ObjectWithHP;//
     [SerializeField] private int MaxHP = 3;
     [SerializeField] private int HP;
     [SerializeField] private float InvincibleDuration = 4f;
     private bool IsInvincible = false;
 
-    private void Start()
+    public float _HP => HP;
+
+    private void Awake()
     {
         //ObjectWithHP = GetComponent<GameObject>();
         HP = MaxHP;
@@ -27,9 +31,7 @@ public class HPManager : MonoBehaviour
         if (HP <= 0)
         {
             Dead();
-            
         }
-        
     }
 
     void Dead()

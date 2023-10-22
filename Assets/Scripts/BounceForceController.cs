@@ -6,6 +6,8 @@ public class BounceController : MonoBehaviour
     Rigidbody BallRigid;
     [SerializeField] private float BounceForce = 10.0f;
 
+
+
     Vector3 BallSpeed;
 
     private void Awake()
