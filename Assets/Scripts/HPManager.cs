@@ -10,7 +10,11 @@ public class HPManager : MonoBehaviour
     [SerializeField] private int MaxHP = 3;
     [SerializeField] private int HP;
     [SerializeField] private float InvincibleDuration = 4f;
+    [SerializeField] private const string BallTag = "Ball";
+    [SerializeField] private const string TargetTag = "Target";
     private bool IsInvincible = false;
+
+    private ScoreTrack ScoreAdder;
 
     public float _HP => HP;
 
@@ -18,11 +22,12 @@ public class HPManager : MonoBehaviour
     {
         //ObjectWithHP = GetComponent<GameObject>();
         HP = MaxHP;
+        ScoreAdder = FindObjectOfType<ScoreTrack>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!IsInvincible && collision.gameObject.CompareTag("Ball")) { Debug.Log("Hit!"); HP--; }
+        if (!IsInvincible && collision.gameObject.CompareTag(BallTag)) { Debug.Log("Hit!"); HP--; }
         StartInvincibility();
     }
 
@@ -37,6 +42,7 @@ public class HPManager : MonoBehaviour
     void Dead()
     {
         ObjectWithHP.SetActive(false);
+        ScoreAdder.AddScore();
     }
 
     private void StartInvincibility()

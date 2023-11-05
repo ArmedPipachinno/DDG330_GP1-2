@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - BounceSurface
+  - Target
   layers:
   - Default
   - TransparentFX

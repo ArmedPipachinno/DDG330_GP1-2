@@ -9,6 +9,8 @@ public class BallSpawnHandler : MonoBehaviour
     [SerializeField] private float LaunchForce = 25f;
     [SerializeField] private int BallAvailable = 3;
 
+    //private ShopManager ShopManager;
+
     private GameObject SpawnedObject;
     private bool HoldingObject = false;
 
@@ -60,5 +62,12 @@ public class BallSpawnHandler : MonoBehaviour
             HoldingObject = false;
         }
     }
+
+    public int AddItem()
+    {
+        BallAvailable ++;
+        return BallAvailable;
+    }
+
 }
 
