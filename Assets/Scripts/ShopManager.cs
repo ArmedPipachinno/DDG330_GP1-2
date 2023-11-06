@@ -11,6 +11,8 @@ public class ShopManager : MonoBehaviour
     private ScoreTrack UseScore;
     private BallSpawnHandler BallItem;
 
+    [SerializeField] private List<ShopEntry> _shopEntries = new List<ShopEntry>();
+
     void Awake()
     {
         UseScore = FindObjectOfType<ScoreTrack>();
@@ -51,3 +53,13 @@ public class ShopManager : MonoBehaviour
     }
 
 }
+
+[System.Serializable]
+public class ShopEntry
+{
+    public string Name;
+    public string Description;
+    public Sprite Pic;
+    public int Price;
+}
+//singleton class

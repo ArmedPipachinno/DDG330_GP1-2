@@ -4609,6 +4609,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShopUi: {fileID: 1795203036}
+  _shopEntries:
+  - Name: 
+    Description: 
+    Pic: {fileID: 0}
+    Price: 0
 --- !u!1 &2135643515 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3194855841134816826, guid: 13ada8dbfb9040e478ab221d1c4183fc, type: 3}

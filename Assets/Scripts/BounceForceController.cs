@@ -42,8 +42,10 @@ public class BounceController : MonoBehaviour
                 case ObjectType.Player:
                 case ObjectType.Target:
                     var Speed = BallSpeed.magnitude;
+                    // speed +=
                     Vector3 BounceDirection = Vector3.Reflect(BallSpeed.normalized, collision.contacts[0].normal);
-                    GetComponent<Rigidbody>().AddForce(BounceDirection * BounceForce, ForceMode.Impulse);
+                    //GetComponent<Rigidbody>().AddForce(BounceDirection * BounceForce, ForceMode.Impulse);
+                    GetComponent<Rigidbody>().velocity = Speed * BounceDirection;
                     break;
             }
         }
