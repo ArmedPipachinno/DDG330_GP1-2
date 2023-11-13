@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8548161100668668879}
   - component: {fileID: 2002279080435216112}
   m_Layer: 0
-  m_Name: Target
+  m_Name: NormalTarget
   m_TagString: BounceSurface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

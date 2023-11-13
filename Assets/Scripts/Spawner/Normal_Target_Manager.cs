@@ -1,11 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Target_Manager : MonoBehaviour
+public class Normal_Target_Manager : MonoBehaviour
 {
     [SerializeField] Transform TargetObject;
+    [SerializeField] private const string BallTag = "Ball";
 
+    private HPManager HpCheck;
+    private Action<Normal_Target_Manager> KillTarget;
+
+    public void Init(Action<Normal_Target_Manager> killAction)
+    { KillTarget = killAction; }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag(BallTag))
+        {
+            if(HpCheck._HP <= 0) //way to activate when certain funtion in other class is called
+            { KillTarget?.Invoke(this); }
+        }
+    }
+
+    public void ResetData()
+    {
+        //Might need to add more reference to reset certain value from another class
+        transform.rotation = Quaternion.identity;
+    }
     void Update()
     {
         Vector3 directionToTarget = TargetObject.position - transform.position;
