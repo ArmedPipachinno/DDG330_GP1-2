@@ -18,8 +18,10 @@ public class Normal_Target_Manager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(BallTag))
         {
-            if(HpCheck._HP <= 0) //way to activate when certain funtion in other class is called
-            { KillTarget?.Invoke(this); }
+            if(HpCheck._HP == 0) //way to activate when certain funtion in other class is called
+            { 
+                KillTarget?.Invoke(this); 
+            }
         }
     }
 
