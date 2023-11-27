@@ -5,8 +5,7 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] private float WalkSpeed = 1.0f;
     [SerializeField] private float RunSpeed = 2.0f;
-    [SerializeField] private Vector3 LimitedAreaL;
-    [SerializeField] private Vector3[] LimitedArea;
+    [SerializeField] private Vector3 LimitedArea;
 
     void Update()
     {
@@ -32,6 +31,40 @@ public class Movement : MonoBehaviour
         //    Debug.Log("Out of range");
         //    transform.position = -newPosition;
         //}
+        ////else if (transform.position.x == LimitedArea[1].x)
+        ////{
+        ////    Debug.Log("Out of range");
+        ////    transform.position = newPosition;
+        ////}
+        //else
+        //{
+        //    // Update the position of the GameObject
+        //    transform.position = -newPosition;
+        //}
+
+        Vector3 pos = transform.position;
+
+        if (transform.position.x <= -LimitedArea.x)
+        {
+            pos.x = -LimitedArea.x;
+        }
+
+        if (transform.position.x >= LimitedArea.x)
+        {
+            pos.x = LimitedArea.x;
+        }
+
+        if (transform.position.z <= -LimitedArea.z)
+        {
+            pos.z = -LimitedArea.z;
+        }
+
+        if (transform.position.z >= LimitedArea.z)
+        {
+            pos.z = LimitedArea.z;
+        }
+
+        transform.position = pos;
         ////else if (transform.position.x == LimitedArea[1].x)
         ////{
         ////    Debug.Log("Out of range");

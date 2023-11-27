@@ -83,12 +83,12 @@ public class ShopManager : MonoBehaviour
                 if (itemIndex < ShopItems.Count)
                 {
                     Item currentItem = ShopItems[itemIndex];
-                    ItemName[i].text = "Name: " + currentItem.Name;
-                    ItemValue[i].text = "Value: " + currentItem.Value.ToString();
-                    ItemDescription[i].text = "Description: \n" + currentItem.Description;
+                    ItemName[i].text = "Name: " + currentItem._Name;
+                    ItemValue[i].text = "Value: " + currentItem._Value.ToString();
+                    ItemDescription[i].text = "Description: \n" + currentItem._Description;
 
                     // Load and display the item image from the Assets folder
-                    LoadImage(currentItem.Picture, ItemImages[i]);
+                    LoadImage(currentItem._Picture, ItemImages[i]);
                     // Load and display the item image (assuming the image path is correct)
                     //StartCoroutine(LoadImage(currentItem.Picture, ItemImages[i]));
                 }
@@ -104,19 +104,19 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    private void LoadImage(string imageName, Image image)
+    private void LoadImage(Sprite sprite, Image image)
     {
         // Load the image directly from the Resources folder
-        Sprite loadedSprite = Resources.Load<Sprite>(imageName) as Sprite;
+        //Sprite loadedSprite = Resources.Load<Sprite>(imageName) as Sprite;
 
         // Set the sprite of the Image component
-        if (loadedSprite != null)
+        if (sprite != null)
         {
-            image.sprite = loadedSprite;
+            image.sprite = sprite;
         }
         else
         {
-            Debug.LogError($"Failed to load image: {imageName}");
+            //Debug.LogError($"Failed to load image: {imageName}");
         }
     }
 
