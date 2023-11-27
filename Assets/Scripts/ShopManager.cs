@@ -66,40 +66,40 @@ public class ShopManager : MonoBehaviour
     public void ShopPurchase()
     {
         //make public reader to send Item price to Ui manager
-        UseScore.MinusScore();
-        BallItem.AddItem();
-        Debug.Log("Purchase a ball");
+        int itemPrice = ShopItems[CurrentItemIndex]._Value;
+        Debug.Log($"Current item: {itemPrice}");
+        //UseScore.MinusScore();
+        //BallItem.AddItem();
+        //Debug.Log("Purchase a ball");
     }
     private void DisplayItems()
     {
         // Ensure the index is within bounds
-        if (CurrentItemIndex >= 0 && CurrentItemIndex < ShopItems.Count)
+        for (int i = 0; i < ItemName.Length; i++)
         {
-            for (int i = 0; i < ItemName.Length; i++)
+            int itemIndex = (CurrentItemIndex + i) % ShopItems.Count;
+
+
+            // Update UI elements with item information
+            if (itemIndex < ShopItems.Count)
             {
-                int itemIndex = CurrentItemIndex + i;
+                Item currentItem = ShopItems[itemIndex];
+                ItemName[i].text = "Name: " + currentItem._Name;
+                ItemValue[i].text = "Value: " + currentItem._Value.ToString();
+                ItemDescription[i].text = "Description: \n" + currentItem._Description;
 
-                // Update UI elements with item information
-                if (itemIndex < ShopItems.Count)
-                {
-                    Item currentItem = ShopItems[itemIndex];
-                    ItemName[i].text = "Name: " + currentItem._Name;
-                    ItemValue[i].text = "Value: " + currentItem._Value.ToString();
-                    ItemDescription[i].text = "Description: \n" + currentItem._Description;
-
-                    // Load and display the item image from the Assets folder
-                    LoadImage(currentItem._Picture, ItemImages[i]);
-                    // Load and display the item image (assuming the image path is correct)
-                    //StartCoroutine(LoadImage(currentItem.Picture, ItemImages[i]));
-                }
-                else
-                {
-                    // If there are no more items, clear the UI elements
-                    ItemName[i].text = "";
-                    ItemValue[i].text = "";
-                    ItemDescription[i].text = "";
-                    ItemImages[i].sprite = null;
-                }
+                // Load and display the item image from the Assets folder
+                LoadImage(currentItem._Picture, ItemImages[i]);
+                // Load and display the item image (assuming the image path is correct)
+                //StartCoroutine(LoadImage(currentItem.Picture, ItemImages[i]));
+            }
+            else
+            {
+                // If there are no more items, clear the UI elements
+                ItemName[i].text = "";
+                ItemValue[i].text = "";
+                ItemDescription[i].text = "";
+                ItemImages[i].sprite = null;
             }
         }
     }
@@ -124,6 +124,7 @@ public class ShopManager : MonoBehaviour
     {
         // Move to the next set of items
         CurrentItemIndex += ItemName.Length;
+        CurrentItemIndex %= ShopItems.Count;
 
         // Display the updated set of items
         DisplayItems();
@@ -133,9 +134,8 @@ public class ShopManager : MonoBehaviour
     {
         // Move to the previous set of items
         CurrentItemIndex -= ItemName.Length;
-
-        // Ensure the index does not go below zero
-        CurrentItemIndex = Mathf.Max(CurrentItemIndex, 0);
+        CurrentItemIndex += ShopItems.Count;
+        CurrentItemIndex %= ShopItems.Count;
 
         // Display the updated set of items
         DisplayItems();
@@ -153,3 +153,4 @@ public class ShopManager : MonoBehaviour
 //}
 
 //singleton class
+
