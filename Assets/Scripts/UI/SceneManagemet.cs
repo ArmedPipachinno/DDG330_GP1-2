@@ -7,7 +7,12 @@ public class SceneManagement : MonoBehaviour
 {
     [field: SerializeField] string StartScenename;
     [SerializeField] private string ControlScenename;
-    [SerializeField] private string MenuScenename;
+    [SerializeField] private string MenuScenename = "MainMenu";
+    [SerializeField] private string WinScene = "EndSceneW";
+    [SerializeField] private string LoseScene = "EndSceneL";
+    [SerializeField] GameObject OptionsMenuUI;
+    private bool OptionActive = false;
+
 
     public void StartGame()
     {
@@ -26,11 +31,36 @@ public class SceneManagement : MonoBehaviour
         SceneManager.LoadScene(MenuScenename);
         Time.timeScale = 1;
     }
+    public void EndW()
+    {
+        SceneManager.LoadScene(WinScene);
+        Time.timeScale = 1;
+    }
+    public void EndL()
+    {
+        SceneManager.LoadScene(LoseScene);
+        Time.timeScale = 1;
+    }
 
     public void QuitGame()
     {
         //Debug.Log("Quit");
         Application.Quit();
     }
+
+    public void ActivateOptions()
+    {
+        if (OptionActive) 
+        { 
+            OptionActive = false;
+            OptionsMenuUI.SetActive(false); }
+        else
+        {
+            OptionActive = true;
+            OptionsMenuUI.SetActive(true);
+        }
+    }
+
+
 
 }

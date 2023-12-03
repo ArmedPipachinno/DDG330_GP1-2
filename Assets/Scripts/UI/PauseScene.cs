@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseScene : MonoBehaviour
 {
     [field: SerializeField] GameObject PauseMenuUI;
-    [field: SerializeField] string MenuScenename;
+    //[field: SerializeField] string MenuScenename;
     private bool IsPaused = false;
 
     //public static PauseScene _Instance;
@@ -47,11 +47,11 @@ public class PauseScene : MonoBehaviour
         Time.timeScale = 1;
         IsPaused = false;
     }
-    public void Mainmenu()
-    {
-        SceneManager.LoadScene(MenuScenename);
-        Time.timeScale = 1;
-    }
+    //public void Mainmenu()
+    //{
+    //    SceneManager.LoadScene(MenuScenename);
+    //    Time.timeScale = 1;
+    //}
 
     public void QuitGame()
     {
