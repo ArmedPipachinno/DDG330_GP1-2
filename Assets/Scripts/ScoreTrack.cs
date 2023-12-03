@@ -26,7 +26,7 @@ public class ScoreTrack : MonoBehaviour
         //    Debug.Log("ItemPirceReductor is assigned!");
         //}
 
-        //ItemPirceReductor = FindObjectOfType<ShopManager>();
+        ItemPirceReductor = FindObjectOfType<ShopManager>();
 
         //if (ItemPirceReductor == null)
         //{

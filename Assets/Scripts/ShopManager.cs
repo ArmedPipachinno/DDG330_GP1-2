@@ -19,10 +19,10 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] ItemDescription;
     [SerializeField] private Image[] ItemImages;
 
-    private ScoreTrack UseScore;
+    [SerializeField] private ScoreTrack UseScore;
     private BallSpawnHandler BallItem;
 
-    [SerializeField] private Movement PlayerMovAbilities;
+    [SerializeField] private AbilitiesManager PlayerAbilities;
 
     void Start()
     {
@@ -74,7 +74,7 @@ public class ShopManager : MonoBehaviour
             ItemPrice = ShopItems[CurrentItemIndex]._Value;
             Debug.Log($"Current item: {ItemPrice}");
             var item = ShopItems[CurrentItemIndex];
-            PlayerMovAbilities.ActiveAbilities(item);
+            PlayerAbilities.ActiveAbilities(item);
             UseScore.MinusScore();
             ShopItems.RemoveAt(CurrentItemIndex);
             DisplayItems();
@@ -89,6 +89,7 @@ public class ShopManager : MonoBehaviour
         //DisplayItems();
 
     }
+
     private void DisplayItems()
     {
         // Ensure the index is within bounds

@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private int SpawnAmt = 10;
     [SerializeField] private Vector3 SpawnAreaCenter; // Center of the spawn area
     [SerializeField] private Vector3 SpawnAreaSize;   // Size of the spawn area
-    [SerializeField] private float SpawnInterval = 2f; // Time interval between spawns in seconds
+    [SerializeField] private float SpawnInterval = 5f; // Time interval between spawns in seconds
     [SerializeField] private Normal_Target_Manager NormalTarget;
 
     private TargetObjectPool NormalTargetPool;
@@ -54,5 +54,10 @@ public class Spawner : MonoBehaviour
         spawnedTarget.transform.position = randomSpawnPosition;
         spawnedTarget.transform.rotation = Quaternion.identity;
         NormalTarget.Init(KillTarget);
+    }
+
+    public void SpawnMoretarget()
+    {
+        SpawnInterval = 1.5f;
     }
 }

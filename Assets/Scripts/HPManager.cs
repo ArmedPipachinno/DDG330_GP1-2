@@ -12,8 +12,10 @@ public class HPManager : MonoBehaviour
     [SerializeField] private float InvincibleDuration = 4f;
     [SerializeField] private const string BallTag = "Ball";
     [SerializeField] private const string TargetTag = "Target";
+    [SerializeField] private const string PlayerTag = "Player";
     private bool IsInvincible = false;
 
+    [SerializeField] private SceneManagement LLoader;
     private ScoreTrack ScoreAdder;
 
     public float _HP => HP;
@@ -36,7 +38,17 @@ public class HPManager : MonoBehaviour
         if (HP <= 0)
         {
             Dead();
+            if (ObjectWithHP.CompareTag(PlayerTag))
+            {
+                LLoader.EndL();
+            }
         }
+    }
+
+    public void Healplayer()
+    {
+        if (ObjectWithHP.CompareTag(PlayerTag)) { HP = HP + 3; }
+        
     }
 
     void Dead()
