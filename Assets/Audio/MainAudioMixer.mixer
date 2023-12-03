@@ -92,11 +92,11 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
-  - guid: eedfb28b321895e4f9494bf7253e186a
-    name: Music
-  - guid: 4b323576ac659f64791c735a9bfff4a9
+  - guid: 99b97e6e1d9a9b44d808795fb8421c26
+    name: BGM
+  - guid: c9ec4e3e05a400245a6617ceb464e307
     name: Master
-  - guid: 547b5dcceacf8c744979dcf432549898
+  - guid: df0d99db1048f7a4fa11bc2867af3869
     name: SFX
   m_AudioMixerGroupViews:
   - guids:
@@ -157,12 +157,12 @@ AudioMixerSnapshotController:
     fb8fb1e803cc1834087d299106e1d10d: 0.818
     acf9d7aa0a45530499f303f618607e34: 2
     67699b1b85c974942b7f4cc3b9b25475: 0.495
-    df0d99db1048f7a4fa11bc2867af3869: 0.02557829
+    df0d99db1048f7a4fa11bc2867af3869: 0.04171297
     ac68abfb9ece8ca419e1dcc3ad2e31ad: -39.2
-    547b5dcceacf8c744979dcf432549898: 0.69
+    547b5dcceacf8c744979dcf432549898: 1
     17c50f6dd9d8a7840b79e9627996de1d: 12.5
-    c9ec4e3e05a400245a6617ceb464e307: 0.1080026
-    99b97e6e1d9a9b44d808795fb8421c26: -0.39762527
+    c9ec4e3e05a400245a6617ceb464e307: 0
+    99b97e6e1d9a9b44d808795fb8421c26: 0
   m_TransitionOverrides: {}
 --- !u!244 &3165805428944615693
 AudioMixerEffectController:

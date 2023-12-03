@@ -479,10 +479,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e978123637976a41a3cf67ac3141b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioMixer: {fileID: 24100000, guid: c3ae4f7402a06b04699a61f93642fdc0, type: 2}
-  _slider: {fileID: 2120727316}
-  _volumeParameter: Master
-  _volumeMulti: 20
+  AudioMixer: {fileID: 24100000, guid: c3ae4f7402a06b04699a61f93642fdc0, type: 2}
+  Slider: {fileID: 2120727316}
+  MasterParameter: Master
+  VolumeMulti: 20
 --- !u!114 &449894181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,10 +526,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e978123637976a41a3cf67ac3141b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioMixer: {fileID: 24100000, guid: c3ae4f7402a06b04699a61f93642fdc0, type: 2}
-  _slider: {fileID: 1840139853}
-  _volumeParameter: SFX
-  _volumeMulti: 20
+  AudioMixer: {fileID: 24100000, guid: c3ae4f7402a06b04699a61f93642fdc0, type: 2}
+  Slider: {fileID: 1840139853}
+  MasterParameter: SFX
+  VolumeMulti: 20
 --- !u!1 &451018379
 GameObject:
   m_ObjectHideFlags: 0
