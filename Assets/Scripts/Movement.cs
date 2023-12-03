@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float WalkSpeed = 1.0f;
     [SerializeField] private float RunSpeed = 2.0f;
     [SerializeField] private Vector3 LimitedArea;
+    [SerializeField] private string SpeedAbilities = "SpeedBoost";
 
     void Update()
     {
@@ -98,6 +99,21 @@ public class Movement : MonoBehaviour
         // Convert the angle from radians to degrees and rotate the object around Y-axis
         float angleInDegrees = angle * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, angleInDegrees, 0));
+    }
+
+    public void ActiveAbilities(Item item)
+    {
+        // Assuming "activeDoubleSpeed" is a method in your Player script
+        if (item._Name == SpeedAbilities) // Change "DoubleSpeedItem" to the actual name of your double speed item
+        {
+            Debug.Log("activeDoubleSpeed()");
+            WalkSpeed = WalkSpeed * 2f;
+            RunSpeed = RunSpeed * 2f;
+        }
+        else
+        {
+            Debug.Log("Shop wrong");
+        }
     }
 }
 
