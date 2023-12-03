@@ -8,13 +8,34 @@ public class ScoreTrack : MonoBehaviour
     [SerializeField] private GameObject Score;
     [SerializeField] private TextMeshProUGUI ScoreUi;
 
-    private int PlayerScore = 0;
+    [SerializeField] private ShopManager ItemPirceReductor;
 
+    private int PlayerScore = 0;
     public int _PScore => PlayerScore;
 
-    void Awake()
+    void Start()
     {
+        ItemPirceReductor = GetComponent<ShopManager>();
 
+        //if (ItemPirceReductor == null)
+        //{
+        //    Debug.LogError("ItemPirceReductor is not assigned!");
+        //}
+        //else
+        //{
+        //    Debug.Log("ItemPirceReductor is assigned!");
+        //}
+
+        //ItemPirceReductor = FindObjectOfType<ShopManager>();
+
+        //if (ItemPirceReductor == null)
+        //{
+        //    Debug.LogError("No ShopManager found in the scene!");
+        //}
+        //else
+        //{
+        //    Debug.Log("ShopManager found!");
+        //}
     }
 
     void Update()
@@ -30,7 +51,8 @@ public class ScoreTrack : MonoBehaviour
 
     public int MinusScore()
     {
-        PlayerScore -= 100;
+        PlayerScore -= ItemPirceReductor._ItemPrice;
+        //PlayerScore -= 100;
         return PlayerScore;
     }
 

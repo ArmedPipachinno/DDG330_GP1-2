@@ -11,6 +11,8 @@ public class ShopManager : MonoBehaviour
 
     private List<Item> ShopItems;
     private int CurrentItemIndex = 0;
+    private int ItemPrice;
+    public int _ItemPrice => ItemPrice;
 
     [SerializeField] private TextMeshProUGUI[] ItemName;
     [SerializeField] private TextMeshProUGUI[] ItemValue;
@@ -20,9 +22,9 @@ public class ShopManager : MonoBehaviour
     private ScoreTrack UseScore;
     private BallSpawnHandler BallItem;
 
-    //[SerializeField] private List<ShopEntry> _shopEntries = new List<ShopEntry>();
+    [SerializeField] private Movement PlayerMovAbilities;
 
-    void Awake()
+    void Start()
     {
         UseScore = FindObjectOfType<ScoreTrack>();
         BallItem = FindObjectOfType<BallSpawnHandler>();
@@ -66,41 +68,69 @@ public class ShopManager : MonoBehaviour
     public void ShopPurchase()
     {
         //make public reader to send Item price to Ui manager
-        int itemPrice = ShopItems[CurrentItemIndex]._Value;
-        Debug.Log($"Current item: {itemPrice}");
-        //UseScore.MinusScore();
+        
+        if(UseScore._PScore > ItemPrice)
+        {
+            ItemPrice = ShopItems[CurrentItemIndex]._Value;
+            Debug.Log($"Current item: {ItemPrice}");
+            var item = ShopItems[CurrentItemIndex];
+            PlayerMovAbilities.ActiveAbilities(item);
+            UseScore.MinusScore();
+            ShopItems.RemoveAt(CurrentItemIndex);
+            DisplayItems();
+        }
+        else
+        {
+            Debug.Log("Not enough score");
+        }
+
         //BallItem.AddItem();
         //Debug.Log("Purchase a ball");
+        //DisplayItems();
+
     }
     private void DisplayItems()
     {
         // Ensure the index is within bounds
         for (int i = 0; i < ItemName.Length; i++)
         {
-            int itemIndex = (CurrentItemIndex + i) % ShopItems.Count;
-
-
-            // Update UI elements with item information
-            if (itemIndex < ShopItems.Count)
+            if (ShopItems.Count > 0)
             {
-                Item currentItem = ShopItems[itemIndex];
-                ItemName[i].text = "Name: " + currentItem._Name;
-                ItemValue[i].text = "Value: " + currentItem._Value.ToString();
-                ItemDescription[i].text = "Description: \n" + currentItem._Description;
+                int itemIndex = (CurrentItemIndex + i) % ShopItems.Count;
+                // Update UI elements with item information
+                if (itemIndex < ShopItems.Count)
+                {
+                    Item currentItem = ShopItems[itemIndex];
+                    ItemName[i].text = "Name: " + currentItem._Name;
+                    ItemValue[i].text = "Value: " + currentItem._Value.ToString();
+                    ItemDescription[i].text = "Description: \n" + currentItem._Description;
 
-                // Load and display the item image from the Assets folder
-                LoadImage(currentItem._Picture, ItemImages[i]);
-                // Load and display the item image (assuming the image path is correct)
-                //StartCoroutine(LoadImage(currentItem.Picture, ItemImages[i]));
+                    // Load and display the item image from the Assets folder
+                    LoadImage(currentItem._Picture, ItemImages[i]);
+                    // Load and display the item image (assuming the image path is correct)
+                    //StartCoroutine(LoadImage(currentItem.Picture, ItemImages[i]));
+                }
+                else
+                {
+                    // If there are no more items, clear the UI elements
+                    ItemName[i].text = null;
+                    ItemValue[i].text = null;
+                    ItemDescription[i].text = null;
+                    ItemImages[i].sprite = null;
+                }
+
+                Debug.Log($"Current item: {itemIndex}");
             }
             else
             {
-                // If there are no more items, clear the UI elements
                 ItemName[i].text = "";
                 ItemValue[i].text = "";
                 ItemDescription[i].text = "";
                 ItemImages[i].sprite = null;
             }
+
+
+
         }
     }
 
@@ -125,7 +155,7 @@ public class ShopManager : MonoBehaviour
         // Move to the next set of items
         CurrentItemIndex += ItemName.Length;
         CurrentItemIndex %= ShopItems.Count;
-
+        
         // Display the updated set of items
         DisplayItems();
     }
@@ -136,7 +166,7 @@ public class ShopManager : MonoBehaviour
         CurrentItemIndex -= ItemName.Length;
         CurrentItemIndex += ShopItems.Count;
         CurrentItemIndex %= ShopItems.Count;
-
+        
         // Display the updated set of items
         DisplayItems();
     }
