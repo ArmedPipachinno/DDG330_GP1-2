@@ -23,6 +23,7 @@ public class ShopManager : MonoBehaviour
     private BallSpawnHandler BallItem;
 
     [SerializeField] private AbilitiesManager PlayerAbilities;
+    [SerializeField] private AudioManager PlayerPurchase;
 
     void Start()
     {
@@ -72,7 +73,8 @@ public class ShopManager : MonoBehaviour
         if(UseScore._PScore > ItemPrice)
         {
             ItemPrice = ShopItems[CurrentItemIndex]._Value;
-            Debug.Log($"Current item: {ItemPrice}");
+            PlayerPurchase.PlayPurcaseSound();
+            //Debug.Log($"Current item: {ItemPrice}");
             var item = ShopItems[CurrentItemIndex];
             PlayerAbilities.ActiveAbilities(item);
             UseScore.MinusScore();
@@ -81,7 +83,8 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not enough score");
+            PlayerPurchase.PlayCanNotPurcaseSound();
+            //Debug.Log("Not enough score");
         }
 
         //BallItem.AddItem();

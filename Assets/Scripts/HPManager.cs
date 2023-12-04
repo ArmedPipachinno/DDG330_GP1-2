@@ -15,6 +15,7 @@ public class HPManager : MonoBehaviour
     [SerializeField] private const string PlayerTag = "Player";
     private bool IsInvincible = false;
 
+    [SerializeField] private AudioManager PlayHit;
     [SerializeField] private SceneManagement LLoader;
     private ScoreTrack ScoreAdder;
 
@@ -30,6 +31,7 @@ public class HPManager : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (!IsInvincible && collision.gameObject.CompareTag(BallTag)) { Debug.Log("Hit!"); HP--; }
+        PlayHit.PlayHitSound();
         StartInvincibility();
     }
 

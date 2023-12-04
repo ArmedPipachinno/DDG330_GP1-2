@@ -15,8 +15,7 @@ public class BounceController : MonoBehaviour
     Rigidbody BallRigid;
     [SerializeField] private float BounceForce = 10.0f;
 
-
-
+    [SerializeField] private AudioManager BallBounce;
     Vector3 BallSpeed;
 
     private void Awake()
@@ -42,13 +41,16 @@ public class BounceController : MonoBehaviour
                 case ObjectType.Player:
                 case ObjectType.Target:
                     var Speed = BallSpeed.magnitude;
-                    // speed +=
+                    // speed += 10
                     Vector3 BounceDirection = Vector3.Reflect(BallSpeed.normalized, collision.contacts[0].normal);
                     //GetComponent<Rigidbody>().AddForce(BounceDirection * BounceForce, ForceMode.Impulse);
                     GetComponent<Rigidbody>().velocity = Speed * BounceDirection;
-                    break;
+                break;
             }
         }
+
+        BallBounce.PlayBounceSound();
+
     }
 
     //private void OnCollisionEnter(Collision collision)

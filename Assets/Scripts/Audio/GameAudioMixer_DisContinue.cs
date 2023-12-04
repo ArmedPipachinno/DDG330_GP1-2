@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class GameAudioMixer : MonoBehaviour
+public class GameAudioMixer_DisCintinue : MonoBehaviour
 {
 
     [SerializeField] private string VolumeParameter = "Master";
