@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float RunSpeed = 2.0f;
     [SerializeField] private Vector3 LimitedArea;
 
-    [SerializeField] private AbilitiesManager PlayerAbilities;//[SerializeField] private string SpeedAbilities = "SpeedBoost";
+    [SerializeField] private AbilitiesManager PlayerAbilities;
 
     void Update()
     {
@@ -28,21 +28,6 @@ public class Movement : MonoBehaviour
         // Calculate the new position based on input and speed
         Vector3 newPosition = transform.position + velocity * Time.deltaTime;
         transform.position = newPosition;
-        //if (transform.position.x <= LimitedArea[0].x)
-        //{
-        //    Debug.Log("Out of range");
-        //    transform.position = -newPosition;
-        //}
-        ////else if (transform.position.x == LimitedArea[1].x)
-        ////{
-        ////    Debug.Log("Out of range");
-        ////    transform.position = newPosition;
-        ////}
-        //else
-        //{
-        //    // Update the position of the GameObject
-        //    transform.position = -newPosition;
-        //}
 
         Vector3 pos = transform.position;
 
@@ -67,16 +52,6 @@ public class Movement : MonoBehaviour
         }
 
         transform.position = pos;
-        ////else if (transform.position.x == LimitedArea[1].x)
-        ////{
-        ////    Debug.Log("Out of range");
-        ////    transform.position = newPosition;
-        ////}
-        //else
-        //{
-        //    // Update the position of the GameObject
-        //    transform.position = -newPosition;
-        //}
 
         Point_To_Mouse();
     }
