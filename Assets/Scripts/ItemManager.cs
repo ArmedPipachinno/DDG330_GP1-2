@@ -32,35 +32,9 @@ public class ItemManager : MonoBehaviour
 
     }
 
-    //public void AddItem(Item additem) 
-    //{
-    //    //check to avoid dupe
-    //    if(!ItemsList.Contains(additem))
-    //    {
-    //        ItemsList.Add(additem);
-    //    }
-    //}
-
     public List<Item> GetItems()
     { return ItemsList; }
 
-    //private void Start()
-    //{
-    //    // Creating preexisting items
-    //    Item sword = new Item("Sword", 50, "sword_picture.jpg", "A sword");
-    //    Item shield = new Item("Shield", 30, "shield_picture.jpg", "A shield");
-
-    //    // Adding preexisting items to the list
-    //    Instance.AddItem(sword);
-    //    Instance.AddItem(shield);
-
-    //    // Retrieving items
-    //    List<Item> itemsList = Instance.GetItems();
-    //    foreach (Item item in itemsList)
-    //    {
-    //        Debug.Log($"Name: {item.Name}, Value: {item.Value}, Picture: {item.Picture}");
-    //    }
-    //}
 }
 
 [System.Serializable]
@@ -76,3 +50,32 @@ public class Item
     public string _Description => Description;
 
 }
+
+
+
+//public void AddItem(Item additem) 
+//{
+//    //check to avoid dupe
+//    if(!ItemsList.Contains(additem))
+//    {
+//        ItemsList.Add(additem);
+//    }
+//}
+
+//private void Start()
+//{
+//    // Creating preexisting items
+//    Item sword = new Item("Sword", 50, "sword_picture.jpg", "A sword");
+//    Item shield = new Item("Shield", 30, "shield_picture.jpg", "A shield");
+
+//    // Adding preexisting items to the list
+//    Instance.AddItem(sword);
+//    Instance.AddItem(shield);
+
+//    // Retrieving items
+//    List<Item> itemsList = Instance.GetItems();
+//    foreach (Item item in itemsList)
+//    {
+//        Debug.Log($"Name: {item.Name}, Value: {item.Value}, Picture: {item.Picture}");
+//    }
+//}

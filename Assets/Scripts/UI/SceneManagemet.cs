@@ -10,8 +10,11 @@ public class SceneManagement : MonoBehaviour
     [SerializeField] private string MenuScenename = "MainMenu";
     [SerializeField] private string WinScene = "EndSceneW";
     [SerializeField] private string LoseScene = "EndSceneL";
-    [SerializeField] GameObject OptionsMenuUI;
+    [SerializeField] private GameObject OptionsMenuUI;
+    [SerializeField] private GameObject HowToPlayUI;
+
     private bool OptionActive = false;
+    private bool HowToPlayActive = false;
 
 
     public void StartGame()
@@ -61,6 +64,18 @@ public class SceneManagement : MonoBehaviour
         }
     }
 
-
+    public void ActivateHowToPlay()
+    {
+        if (HowToPlayActive)
+        {
+            HowToPlayActive = false;
+            HowToPlayUI.SetActive(false);
+        }
+        else
+        {
+            HowToPlayActive = true;
+            HowToPlayUI.SetActive(true);
+        }
+    }
 
 }

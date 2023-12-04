@@ -17,14 +17,14 @@ public class UIManager : MonoBehaviour
         HpReader = HpGetter.GetComponent<HPManager>();
         ScoreReader = ScoreSetter.GetComponent<ScoreTrack>();
 
-        if (HpReader == null)
-        {
-            Debug.LogError("HPManager script not found on the same GameObject as UIManager.");
-        }
-        if (ScoreReader == null)
-        {
-            Debug.LogError("ScoreTracker script not found on the same GameObject as UIManager.");
-        }
+        //if (HpReader == null)
+        //{
+        //    Debug.LogError("HPManager script not found on the same GameObject as UIManager.");
+        //}
+        //if (ScoreReader == null)
+        //{
+        //    Debug.LogError("ScoreTracker script not found on the same GameObject as UIManager.");
+        //}
 
         // Assuming HpGetter contains TextMeshProUGUI component in the Inspector
         //HpUi = HpGetter.GetComponent<TextMeshProUGUI>();

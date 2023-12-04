@@ -25,25 +25,16 @@ public class Swing : MonoBehaviour
             Box.enabled = false;
         }
     }
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider Ballcol)
         {
             // Check if the entering object has the tag "Ball"
-            if (other.CompareTag("Ball"))
+            if (Ballcol.CompareTag("Ball"))
             {
-                // Calculate the direction away from the player object
-                Vector3 awayFromPlayer = other.transform.position - transform.position;
-
-                // Normalize the direction to make it a unit vector
-                awayFromPlayer.Normalize();
-
-                // Get the Rigidbody component of the ball
-                Rigidbody ballRigidbody = other.GetComponent<Rigidbody>();
-
-                // Add velocity to the ball in the opposite direction
-                ballRigidbody.velocity = awayFromPlayer * propelSpeed;
-
-                // Change the rotation of the ball to face away from the player object
-                Quaternion newRotation = Quaternion.LookRotation(-awayFromPlayer);
+                Vector3 awayFromPlayer = Ballcol.transform.position - transform.position;// Calculate the direction the ball collide with player object
+                awayFromPlayer.Normalize();// Normalize the direction to make it a unit vector
+                Rigidbody ballRigidbody = Ballcol.GetComponent<Rigidbody>();// Get the Rigidbody component of the ball
+                ballRigidbody.velocity = awayFromPlayer * propelSpeed;// Add velocity to the ball
+                Quaternion newRotation = Quaternion.LookRotation(-awayFromPlayer);// Change the rotation of the ball to face away from the player object
                 ballRigidbody.rotation = newRotation;
             }
     }

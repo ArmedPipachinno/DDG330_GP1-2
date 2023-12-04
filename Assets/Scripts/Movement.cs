@@ -24,9 +24,7 @@ public class Movement : MonoBehaviour
         }
 
         Vector3 velocity = moveDirection * targetSpeed;
-
-        // Calculate the new position based on input and speed
-        Vector3 newPosition = transform.position + velocity * Time.deltaTime;
+        Vector3 newPosition = transform.position + velocity * Time.deltaTime;// Calculate the new position based on input and speed
         transform.position = newPosition;
 
         Vector3 pos = transform.position;

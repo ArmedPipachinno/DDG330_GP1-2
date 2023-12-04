@@ -9,6 +9,8 @@ public class BallSpawnHandler : MonoBehaviour
     [SerializeField] private float LaunchForce = 25f;
     [SerializeField] private int BallAvailable = 3;
 
+    public int _Ballavailable => BallAvailable;
+
     //private ShopManager ShopManager;
 
     private GameObject SpawnedObject;

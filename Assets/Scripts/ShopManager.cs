@@ -20,7 +20,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Image[] ItemImages;
 
     [SerializeField] private ScoreTrack UseScore;
-    private BallSpawnHandler BallItem;
+    //private BallSpawnHandler BallItem;
 
     [SerializeField] private AbilitiesManager PlayerAbilities;
     [SerializeField] private AudioManager PlayerPurchase;
@@ -28,16 +28,10 @@ public class ShopManager : MonoBehaviour
     void Start()
     {
         UseScore = FindObjectOfType<ScoreTrack>();
-        BallItem = FindObjectOfType<BallSpawnHandler>();
-
-        // Assume the ItemManager is attached to the same GameObject or is accessible
-        ItemManager itemManager = ItemManager._Instance;
-
-        // Retrieve the list of items from the ItemManager
-        ShopItems = itemManager.GetItems();
-
-        // Display the initial set of items in the shop UI
-        DisplayItems();
+        //BallItem = FindObjectOfType<BallSpawnHandler>();
+        ItemManager itemManager = ItemManager._Instance;// Assume the ItemManager is attached to the same GameObject or is accessible
+        ShopItems = itemManager.GetItems();// Retrieve the list of items from the ItemManager
+        DisplayItems();// Display the initial set of items in the shop UI
 
     }
 
@@ -114,14 +108,14 @@ public class ShopManager : MonoBehaviour
                     // Load and display the item image (assuming the image path is correct)
                     //StartCoroutine(LoadImage(currentItem.Picture, ItemImages[i]));
                 }
-                else
-                {
-                    // If there are no more items, clear the UI elements
-                    ItemName[i].text = null;
-                    ItemValue[i].text = null;
-                    ItemDescription[i].text = null;
-                    ItemImages[i].sprite = null;
-                }
+                ////else
+                ////{
+                ////    // If there are no more items, clear the UI elements
+                ////    ItemName[i].text = null;
+                ////    ItemValue[i].text = null;
+                ////    ItemDescription[i].text = null;
+                ////    ItemImages[i].sprite = null;
+                ////}
 
                 Debug.Log($"Current item: {itemIndex}");
             }

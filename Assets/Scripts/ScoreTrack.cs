@@ -38,11 +38,6 @@ public class ScoreTrack : MonoBehaviour
         //}
     }
 
-    void Update()
-    {
-
-    }
-
     public int AddScore()
     {
         PlayerScore += 100;
