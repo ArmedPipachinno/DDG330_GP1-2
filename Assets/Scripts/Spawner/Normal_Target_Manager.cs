@@ -38,12 +38,11 @@ public class Normal_Target_Manager : MonoBehaviour
     {
         Vector3 directionToTarget = TargetObject.position - transform.position;
         directionToTarget.y = 0f; // Set the Y component to 0 to prevent tilting along the Y-axis
+        Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);// Create the rotation looking at the target
+        transform.rotation = Quaternion.Euler(0f, targetRotation.eulerAngles.y, 0f);// Apply the rotation only around the Y-axis
 
-        // Create the rotation looking at the target
-        Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
-
-        // Apply the rotation only around the Y-axis
-        transform.rotation = Quaternion.Euler(0f, targetRotation.eulerAngles.y, 0f);
+    }
+}
         //// Check if the target object is assigned
         //if (TargetObject != null)
         //{
@@ -51,5 +50,3 @@ public class Normal_Target_Manager : MonoBehaviour
         //    // Make the object face towards the target object
         //    transform.LookAt(TargetObject.position);
         //}
-    }
-}
